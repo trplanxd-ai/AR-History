@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lesson 1 Quiz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+<div class="quiz-box">
+    <h2>Lesson 1 - HTML</h2>
+
+    <p class="question" id="question"></p>
+
+    <label><input type="radio" name="ans" value="A"> <span id="A"></span></label>
+    <label><input type="radio" name="ans" value="B"> <span id="B"></span></label>
+    <label><input type="radio" name="ans" value="C"> <span id="C"></span></label>
+    <label><input type="radio" name="ans" value="D"> <span id="D"></span></label>
+
+    <button onclick="next()">Submit</button>
+    <div class="result" id="result"></div>
+</div>
+</div>
+
+<script>
+const questions = [
+    {
+        q: "HTML stands for?",
+        A: "Hyper Text Markup Language",
+        B: "High Text Machine Language",
+        C: "Home Tool Markup Language",
+        D: "None",
+        correct: "A"
+    },
+    {
+        q: "Which tag creates a line break?",
+        A: "<p>",
+        B: "<br>",
+        C: "<div>",
+        D: "<span>",
+        correct: "B"
+    },
+    {
+        q: "Which tag creates a line break?",
+        A: "<p>",
+        B: "<br>",
+        C: "<div>",
+        D: "<span>",
+        correct: "B"
+    }
+];
+
+let current = 0;
+let score = 0;
+let locked = false;
+let wrongQuestions = [];
+let isRedo = false;
+
+let activeQuestions = questions;
+
+function load() {
+    const q = activeQuestions[current];
+    question.innerText = q.q;
+    A.innerText = q.A;
+    B.innerText = q.B;
+    C.innerText = q.C;
+    D.innerText = q.D;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        r.checked = false;
+        r.parentElement.classList.remove("correct", "wrong");
+    });
+
+    result.innerText = "";
+    locked = false;
+}
+
+function next() {
+    if (locked) {
+        current++;
+        if (current < activeQuestions.length) {
+            load();
+        } else {
+            finishQuiz();
+        }
+        return;
+    }
+
+    const selected = document.querySelector("input[name='ans']:checked");
+    if (!selected) {
+        result.innerText = "Choose an answer!";
+        return;
+    }
+
+    const correct = activeQuestions[current].correct;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        if (r.value === correct) {
+            r.parentElement.classList.add("correct");
+        }
+        if (r.checked && r.value !== correct) {
+            r.parentElement.classList.add("wrong");
+        }
+    });
+
+    if (selected.value === correct) {
+        score++;
+    } else if (!isRedo) {
+        wrongQuestions.push(activeQuestions[current]);
+    }
+
+    result.innerText = "Click Submit to continue";
+    locked = true;
+}
+
+function finishQuiz() {
+    let html = `
+        <h2>Finished</h2>
+        <p style="text-align:center;">
+            Score: ${score}/${activeQuestions.length}
+        </p>
+    `;
+
+    if (!isRedo && wrongQuestions.length > 0) {
+        html += `
+            <button onclick="redoWrong()">Redo wrong questions</button>
+        `;
+    } else {
+        html += `
+            <p style="text-align:center;">Good job 🎉</p>
+            <a href="index.html">⬅ Back</a>
+        `;
+    }
+
+    document.querySelector(".quiz-box").innerHTML = html;
+}
+
+function redoWrong() {
+    activeQuestions = wrongQuestions;
+    wrongQuestions = [];
+    current = 0;
+    score = 0;
+    isRedo = true;
+    document.querySelector(".quiz-box").innerHTML = `
+        <h2>Fix Mistakes</h2>
+        <p class="question" id="question"></p>
+
+        <label><input type="radio" name="ans" value="A"> <span id="A"></span></label>
+        <label><input type="radio" name="ans" value="B"> <span id="B"></span></label>
+        <label><input type="radio" name="ans" value="C"> <span id="C"></span></label>
+        <label><input type="radio" name="ans" value="D"> <span id="D"></span></label>
+
+        <button onclick="next()">Submit</button>
+        <div class="result" id="result"></div>
+    `;
+    load();
+}
+
+load();
+</script>
+
+
+</body>
+</html>
