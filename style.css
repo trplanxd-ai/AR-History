@@ -52,6 +52,7 @@ body {
 .question {
     font-weight: bold;
     margin: 15px 0;
+    white-space: pre-wrap;
 }
 
 label {
@@ -188,3 +189,4 @@ button:hover {
     line-height: 1.6;
     color: #555;
 }
+
