@@ -39,21 +39,213 @@
 <script>
 const questions = [
     {
-        q: "Question 1",
-        A: "1",
-        B: "2",
-        C: "3",
-        D: "4",
+        q: "Câu 1. Cuộc kháng chiến toàn quốc chống Pháp của nhân dân Việt Nam bùng nổ ngày",
+        A: "23/9/1945.",
+        B: "6/3/1946.",
+        C: "18/12/1946.",
+        D: "19/12/1946.",
+        correct: "D"
+    },
+    {
+        q: "Câu 2: Trung ương Đảng đã chọn ngày 19/12/1946 là ngày quyết định phát động toàn quốc kháng chiến tại",
+        A: "Cuộc họp của Ban Chấp hành Trung ương Đảng sau khi ta kí Hiệp định Sơ bộ (6/3/1946).",
+        B: "Cuộc họp của Ban Chấp hành Trung ương Đảng sau khi Hội nghị trù bị ở Đà Lạt thất bại (tháng 5/1946).",
+        C: "Cuộc họp của Chính phủ Việt Nam Dân chủ Cộng hoà ngay sau khi đón phái đoàn Việt Nam trở về từ Hội nghị Phôngtennơblô.",
+        D: "Cuộc họp của Ban Chấp hành Trung ương Đảng Cộng sản Đông Dương mở rộng tại Vạn Phúc - Hà Đông (tháng 12/1946).",
+        correct: "D"
+    },
+    {
+        q: "Câu 3: Điền thêm những từ còn thiếu trong câu sau : \"Chúng ta muốn ... , chúng ta ... nhân nhượng\" (Hồ Chí Minh).",
+        A: "độc lập … phải …",
+        B: "tự do … đã …",
+        C: "hoà bình … phải …",
+        D: "thống nhất … đã …",
+        correct: "C"
+    },
+    {
+        q: "Câu 4: Ngày 12/12/1946, Ban Thường vụ Trung ương Đảng đã ra",
+        A: "Lời kêu gọi Tổng khởi nghĩa.",
+        B: "Quân lệnh số 1.",
+        C: "Lời kêu gọi toàn quốc kháng chiến.",
+        D: "Chỉ thị Toàn dân kháng chiến.",
+        correct: "D"
+    },
+    {
+        q: "Câu 5: Đường lối kháng chiến chống Pháp của Đảng là",
+        A: "toàn dân, toàn diện, đánh nhanh thắng nhanh, tự lực cánh sinh.",
+        B: "toàn dân, toàn diện, trường kì, chỉ dựa vào sức lực bản thân.",
+        C: "toàn dân, toàn diện, trường kì, tự lực cánh sinh và không dựa vào ủng hộ quốc tế.",
+        D: "toàn dân, toàn diện, trường kì, tự lực cánh sinh và tranh thủ sự ủng hộ quốc tế.",
+        correct: "D"
+    },
+    {
+        q: "Câu 6: Đảng chủ trương trường kì kháng chiến vì",
+        A: "thực dân Pháp muốn đánh lâu dài.",
+        B: "tương quan lực lượng ban đầu không có lợi cho ta.",
+        C: "muốn các nước tư bản đồng minh giúp đỡ.",
+        D: "muốn Pháp từ bỏ mộng xâm lược nước ta.",
+        correct: "B"
+    },
+    {
+        q: "Câu 7: Cuộc kháng chống Pháp của nhân dân Việt Nam được phát động trong hoàn cảnh",
+        A: "phong trào cách mạng thế giới đang lâm vào giai đoạn thoái trào.",
+        B: "ta vẫn chưa được nước nào công nhận và đặt quan hệ.",
+        C: "ta chỉ nhận được sự ủng hộ về mặt tinh thần của Liên Xô và Trung Quốc.",
+        D: "Mĩ bắt đầu can thiệp vào chiến tranh Đông Dương.",
+        correct: "B"
+    },
+    {
+        q: "Câu 8: Cuộc chiến đấu ở các đô thị phía Bắc vĩ tuyến 16 (cuối năm 1946 – đầu năm 1947) đã",
+        A: "làm phá sản hoàn toàn kế hoạch “đánh nhanh thắng nhanh” của Pháp.",
+        B: "tạo điều kiện cho cả nước đi vào cuộc kháng chiến lâu dài.",
+        C: "tiêu diệt hoàn toàn lực lượng quân Pháp ở đây.",
+        D: "đập tan âm mưu xâm lược Việt Nam của thực dân Pháp.",
+        correct: "B"
+    },
+    {
+        q: "Câu 9: Đoạn trích \"Bất kì đàn ông, đàn bà, bất kì người già, người trẻ, không chia tôn giáo, đảng phái, dân tộc. Hễ là người Việt Nam thì phải đứng lên đánh thực dân Pháp để cứu Tổ quốc\" đề cập đến nội dung nào trong đường lối kháng chiến chống Pháp của Đảng?",
+        A: "Kháng chiến toàn diện.",
+        B: "Kháng chiến toàn dân.",
+        C: "Kháng chiến lâu dài.",
+        D: "Tự lực cánh sinh.",
+        correct: "B"
+    },
+    {
+        q: "Câu 10: Mục tiêu của ta khi tiến hành cuộc chiến đấu chống thực dân Pháp ở các đô thị Bắc vĩ tuyến 16 cuối năm 1946 – đầu năm 1947 là",
+        A: "đập tan âm mưu chiếm đóng miền Bắc Việt Nam của Pháp.",
+        B: "tiêu diệt một bộ phận sinh lực địch, làm thất bại kế hoạch “đánh nhanh thắng nhanh” của Pháp.",
+        C: "bao vây, tiêu diệt quân chủ lực Pháp trong các đô thị, xoay chuyển tình thế theo hướng có lợi cho ta.",
+        D: "tạo ra những trận đánh vang dội, làm cơ sở để đẩy mạnh đấu tranh chính trị trên bàn đàm phán.",
+        correct: "B"
+    },
+    {
+        q: "Câu 11: Văn kiện nào sau đây không phản ánh đường lối kháng chiến chống Pháp của Đảng?",
+        A: "Báo cáo Bàn về cách mạng Việt Nam (1951).",
+        B: "Chỉ thị Toàn dân kháng chiến (12/12/1946).",
+        C: "Lời kêu gọi toàn quốc kháng chiến (19/12/1946).",
+        D: "Kháng chiến nhất định thắng lợi (9/1947).",
         correct: "A"
     },
     {
-        q: "Question 2",
-        A: "1",
-        B: "2",
-        C: "3",
-        D: "4",
+        q: "Câu 12: Mặt trận đoàn kết toàn dân trong cuộc kháng chiến chống Pháp (1945 – 1954) của nhân dân Việt Nam là",
+        A: "Mặt trận Việt Minh.",
+        B: "Mặt trận Tổ quốc Việt Nam.",
+        C: "Mặt trận Việt Nam độc lập đồng minh.",
+        D: "Mặt trận Liên Việt.",
+        correct: "D"
+    },
+    {
+        q: "Câu 13: Đơn vị nào sau đây được thành lập trong cuộc chiến đấu của quân dân Hà Nội (cuối năm 1946 – đầu năm 1947)?",
+        A: "Vệ Quốc đoàn.",
+        B: "Quân đội Quốc gia Việt Nam.",
+        C: "Trung đoàn Thủ đô.",
+        D: "Việt Nam Giải phóng quân.",
+        correct: "C"
+    },
+    {
+        q: "Câu 14: Nơi nào hưởng ứng \“Lời kêu gọi toàn quốc kháng chiến\” của Chủ tịch Hồ Chí Minh đầu tiên?",
+        A: "Hà Nội",
+        B: "Nam Định",
+        C: "Huế",
+        D: "Sài Gòn",
+        correct: "A"
+    },
+    {
+        q: "Câu 15: Tác giả của tác phẩm “Kháng chiến nhất định thắng lợi” (1947) là",
+        A: "Hồ Chí Minh.",
+        B: "Trường Chinh.",
+        C: "Phạm Văn Đồng.",
+        D: "Võ Nguyên Giáp.",
         correct: "B"
     },
+      {
+        q: "Câu 16: Cuộc hành quân của cánh quân thủy do Com-muy-nan chỉ huy tiến lên Việt Bắc (1947) lần lượt qua nhũng địa danh nào?",
+        A: "Hà Nội ⇒ Khe Lau ⇒ Đoan Hùng ⇒ Chiêm Hoá.",
+        B: "Hà Nội ⇒ Đoan Hùng ⇒ Chiêm Hoá ⇒ Khe Lau.",
+        C: "Hà Nội ⇒ Đoan Hùng ⇒ Khe Lau ⇒ Chiêm Hoá.",
+        D: "Hà Nội ⇒ Đoan Hùng ⇒ Khe Lau ⇒ Tuyên Quang.",
+        correct: "C"
+    },
+      {
+        q: "Câu 17: Cuộc tiến quân lên Việt Bắc năm 1947 của Pháp diễn ra trong khoảng thời gian nào?",
+        A: "Từ ngày 10 - 7 đến 19 - 12 - 1947.",
+        B: "Từ ngày 7 - 10 đến 19 - 12 - 1947.",
+        C: "Từ ngày 17 - 10 đến 29 - 12 - 1947.",
+        D: "Từ ngày 10 - 7 đến 12 - 9 - 1947.",
+        correct: "B"
+    },
+      {
+        q: "Câu 18: Năm 1947, thực dân Pháp huy động 12000 quân tinh nhuệ và hầu hết máy bay ở Đông Dương chia thành 3 cánh mở cuộc tiến công",
+        A: "Tây Bắc",
+        B: "Điện Biên Phủ.",
+        C: "Hà Nội.",
+        D: "Việt Bắc.",
+        correct: "D"
+    },
+      {
+        q: "Câu 19: Chiến thắng Việt Bắc thu - đông năm 1947 của quân dân Việt Nam đã",
+        A: "giúp quân ta giành được thế chủ động trên chiến trường chính.",
+        B: "làm thất bại âm mưu “đánh nhanh thắng nhanh” của Pháp.",
+        C: "giúp ta đã giành thế chủ động trên toàn bộ chiến trường.",
+        D: "đập tan âm mưu xâm lược Việt Nam của thực dân Pháp.",
+        correct: "B"
+    },
+      {
+        q: "Câu 20: Pháp buộc phải chuyển sang chiến lược \"đánh lâu dài\" từ khi nào?",
+        A: "Trước khi thực hiện Kế hoạch Bôlae (1947).",
+        B: "Sau thất bại ở Biên giới năm 1950.",
+        C: "Sau thất bại ở Việt Bắc năm 1947.",
+        D: "Sau khi kiểm soát các đô thị Bắc vĩ tuyến 16 (1947).",
+        correct: "C"
+    },
+      {
+        q: "Câu 21: Đường lối kháng chiến toàn diện của ta diễn ra trên các mặt trận quân sự, chính trị, kinh tế, ngoại giao, trong đó quan trọng nhất là mặt trận",
+        A: "quân sự.",
+        B: "chính trị.",
+        C: "kinh tế.",
+        D: "ngoại giao.",
+        correct: "A"
+    },
+      {
+        q: "Câu 22: Nước đầu tiên công nhận và đặt quan hệ ngoại giao với Chính phủ Việt Nam Dân chủ Cộng hòa là",
+        A: "Liên Xô.",
+        B: "Trung Quốc.",
+        C: "Đông Đức.",
+        D: "Nhật Bản.",
+        correct: "B"
+    },
+      {
+        q: "Câu 23: Khi thực dân Pháp tiến công lên Việt Bắc vào thu - đông 1947, Đảng ta đã có chỉ thị",
+        A: "\“đánh nhanh thắng nhanh\”.",
+        B: "\“phải phòng ngự trước, tiến công sau\”.",
+        C: "\“phải phá tan cuộc tiến công mùa đông của giặc Pháp\”.",
+        D: "\“phải thực hiện tiến công chiến lược lên biên giới\”.",
+        correct: "C"
+    },
+      {
+        q: "Câu 24: Pháp mở cuộc tiến công lên Việt Bắc vào thu - đông năm 1947 nhằm mục đích",
+        A: "nhanh chóng kết thúc chiến tranh.",
+        B: "buộc ta phải đàm phán với những điều khoản có lợi cho chúng.",
+        C: "khóa chặt biên giới Việt- Trung, chặn nguồn liên lạc của ta với thế giới.",
+        D: "giành thắng lợi về quân sự để rút quân về nước.",
+        correct: "A"
+    },
+      {
+        q: "Câu 25: Theo kế hoạch Rơve (1949), thực dân Pháp tăng cường hệ thống phòng ngự trên Đường số 4 nhằm mục đích",
+        A: "ngăn chặn sự liên lạc giữa Việt Bắc với đồng bằng liên khu III, IV.",
+        B: "khóa chặt biên giới Việt-Trung, ngăn chặn liên lạc của ta với thế giới.",
+        C: "củng cố vùng chiếm đóng ở biên giới phía Bắc.",
+        D: "chia cắt chiến trường hai nước Việt Nam và Lào.",
+        correct: "B"
+    },
+      {
+        q: "Câu 26: Âm mưu của Pháp khi tấn công lên Việt Bắc vào tháng 10/1947 là",
+        A: "tiêu diệt cơ quan đầu não kháng chiến của ta, xúc tiến âm mưu thành lập chính phủ bù nhìn.",
+        B: "triệt phá kinh tế, kho tàng, quân chủ lực của ta, buộc ta phải đàm phán theo hướng có lợi cho chúng.",
+        C: "giành thắng lợi quân sự quyết định để kết thúc chiến tranh trong danh dự.",
+        D: "khóa chặt biên giới Việt – Trung, bao vây cô lập căn cứ địa Việt Bắc.",
+        correct: "A"
+    }
 ];
 
 let current = 0;
@@ -168,6 +360,7 @@ load();
 
 </body>
 </html>
+
 
 
 
