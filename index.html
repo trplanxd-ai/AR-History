@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quiz Home</title>
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -15,17 +16,25 @@
 
   <div class="nav-links">
     <a href="about.html">Giới thiệu</a>
+    <a href="data.html">Dữ liệu</a>
     <a href="https://thptcamle.edu.vn/" target="_blank">Trường học</a>
     <a href="index.html" class="start-btn">Vào làm bài</a>
   </div>
+
 </nav>
 
 <div class="home">
-    <h2>Những bài học</h2>
+  <h2 class="lesson-toggle" onclick="toggleLessons()">
+    Những bài học <span id="arrow">▾</span>
+  </h2>
+
+  <div class="lesson-list" id="lessonList">
     <a href="1.html">Tuyên ngôn Độc lập</a>
     <a href="2.html">Lời kêu gọi Toàn quốc kháng chiến</a>
     <a href="3.html">Giải phóng miền Nam, thống nhất đất nước</a>
+  </div>
 </div>
+
 
 <section class="intro" id="about">
   <h1>AR History Quiz</h1>
@@ -55,10 +64,20 @@
     Giáo viên hướng dẫn:  Lê Viết Duyên
   </pre>
 </section>
+<script>
+function toggleLessons() {
+  const list = document.getElementById("lessonList");
+  const arrow = document.getElementById("arrow");
+
+  if (list.style.display === "flex") {
+    list.style.display = "none";
+    arrow.innerText = "▾";
+  } else {
+    list.style.display = "flex";
+    arrow.innerText = "▴";
+  }
+}
+</script>
 
 </body>
 </html>
-
-
-
-
