@@ -14,26 +14,45 @@
 
   <div class="nav-links">
     <a href="about.html">Giới thiệu</a>
+    <a href="data.html">Dữ liệu</a>
     <a href="https://thptcamle.edu.vn/" target="_blank">Trường học</a>
     <a href="index.html" class="start-btn">Vào làm bài</a>
   </div>
+
 </nav>
 
 
 <div class="container">
-<div class="quiz-box">
+  <div class="quiz-box">
     <h2>Tuyên Ngôn Độc Lập</h2>
 
     <p class="question" id="question"></p>
 
-    <label><input type="radio" name="ans" value="A"> <span id="A"></span></label>
-    <label><input type="radio" name="ans" value="B"> <span id="B"></span></label>
-    <label><input type="radio" name="ans" value="C"> <span id="C"></span></label>
-    <label><input type="radio" name="ans" value="D"> <span id="D"></span></label>
+    <div class="answers">
+      <label>
+        <input type="radio" name="ans" value="A">
+        <span id="A"></span>
+      </label>
 
-    <button onclick="next()">Submit</button>
+      <label>
+        <input type="radio" name="ans" value="B">
+        <span id="B"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="C">
+        <span id="C"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="D">
+        <span id="D"></span>
+      </label>
+    </div>
+
+    <button onclick="next()">Tiếp</button>
     <div class="result" id="result"></div>
-</div>
+  </div>
 </div>
 
 <script>
@@ -237,7 +256,7 @@ function next() {
 
     const selected = document.querySelector("input[name='ans']:checked");
     if (!selected) {
-        result.innerText = "Choose an answer!";
+        result.innerText = "Chọn câu trả lời!";
         return;
     }
 
@@ -258,7 +277,7 @@ function next() {
         wrongQuestions.push(activeQuestions[current]);
     }
 
-    result.innerText = "Click Submit to continue";
+    result.innerText = "Nhấp Tiếp để tiếp tục";
     locked = true;
 }
 
@@ -276,7 +295,7 @@ function finishQuiz() {
         `;
     } else {
         html += `
-            <p style="text-align:center;">Good job 🎉</p>
+            <p style="text-align:center;">Tốt lắm 🎉</p>
             <a href="index.html">⬅ Back</a>
         `;
     }
@@ -290,20 +309,39 @@ function redoWrong() {
     current = 0;
     score = 0;
     isRedo = true;
+
     document.querySelector(".quiz-box").innerHTML = `
         <h2>Fix Mistakes</h2>
         <p class="question" id="question"></p>
 
-        <label><input type="radio" name="ans" value="A"> <span id="A"></span></label>
-        <label><input type="radio" name="ans" value="B"> <span id="B"></span></label>
-        <label><input type="radio" name="ans" value="C"> <span id="C"></span></label>
-        <label><input type="radio" name="ans" value="D"> <span id="D"></span></label>
+        <div class="answers">
+          <label>
+            <input type="radio" name="ans" value="A">
+            <span id="A"></span>
+          </label>
 
-        <button onclick="next()">Submit</button>
+          <label>
+            <input type="radio" name="ans" value="B">
+            <span id="B"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="C">
+            <span id="C"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="D">
+            <span id="D"></span>
+          </label>
+        </div>
+
+        <button onclick="next()">Tiếp</button>
         <div class="result" id="result"></div>
     `;
     load();
 }
+
 
 load();
 </script>
@@ -311,11 +349,3 @@ load();
 
 </body>
 </html>
-
-
-
-
-
-
-
-
