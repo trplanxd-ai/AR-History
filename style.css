@@ -28,7 +28,6 @@ body {
     color: #fffdf6;
 }
 
-
 .container {
     display: flex;
     justify-content: center;
@@ -286,3 +285,4 @@ button:hover {
   color: white;
   transform: translateX(6px);
 }
+
