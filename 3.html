@@ -330,7 +330,7 @@ function next() {
 
 function finishQuiz() {
     let html = `
-        <h2>Finished</h2>
+        <h2>Hoàn thành</h2>
         <p style="text-align:center;">
             Score: ${score}/${activeQuestions.length}
         </p>
@@ -343,7 +343,7 @@ function finishQuiz() {
     } else {
         html += `
             <p style="text-align:center;">Tốt lắm 🎉</p>
-            <a href="index.html">⬅ Back</a>
+            <a href="index.html">⬅ Trở lại</a>
         `;
     }
 
@@ -358,7 +358,7 @@ function redoWrong() {
     isRedo = true;
 
     document.querySelector(".quiz-box").innerHTML = `
-        <h2>Fix Mistakes</h2>
+        <h2>Sửa lỗi</h2>
         <p class="question" id="question"></p>
 
         <div class="answers">
