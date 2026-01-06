@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sự ra đời của Đảng Cộng sản Việt Nam (1930)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<nav class="navbar">
+  <div class="nav-left">
+    <span class="logo"><img src="camlelogo.png" width=80px> AR History Quiz</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="about.html">Giới thiệu</a>
+    <a href="data.html">Dữ liệu</a>
+    <a href="https://thptcamle.edu.vn/" target="_blank">Trường học</a>
+    <a href="index.html" class="start-btn">Vào làm bài</a>
+  </div>
+
+</nav>
+
+
+<div class="container">
+  <div class="quiz-box">
+    <h2>Sự ra đời của Đảng Cộng sản Việt Nam (1930)</h2>
+
+    <p class="question" id="question"></p>
+
+    <div class="answers">
+      <label>
+        <input type="radio" name="ans" value="A">
+        <span id="A"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="B">
+        <span id="B"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="C">
+        <span id="C"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="D">
+        <span id="D"></span>
+      </label>
+    </div>
+
+    <button onclick="next()">Tiếp</button>
+    <div class="result" id="result"></div>
+  </div>
+</div>
+
+
+<script>
+const questions = [
+    {
+        q: "Câu 1. Đảng Cộng sản Việt Nam tiến hành công cuộc đổi mới đất nước từ tháng 12/1986 trong hoàn cảnh như thế nào?",
+        A: "Hệ thống xã hội chủ nghĩa thế giới đã sụp đổ.",
+        B: "Tình hình thế giới có rất nhiều điểm thuận lợi.",
+        C: "Đất nước đang trên đà phát triển rất mạnh mẽ.",
+        D: "Đang lâm vào khủng hoảng về kinh tế-xã hội.",
+        correct: "D"
+    },
+    {
+        q: "Câu 2. Đại hội đại biểu toàn quốc lần thứ VI của Đảng Cộng sản Việt Nam (12/1986) xác định nhiệm vụ, mục tiêu của Ba chương trình kinh tế lớn là",
+        A: "lương thực-nông sản, hàng tiêu dùng, hàng nhập khẩu.",
+        B: "lương thực, hàng tiêu dùng, hàng xuất khẩu, nông sản.",
+        C: "lương thực-thực phẩm, hàng xuất khẩu, hàng quân sự.",
+        D: "lương thực-thực phẩm, hàng tiêu dùng, hàng xuất khẩu.",
+        correct: "D"
+    },
+    {
+        q: "Câu 3. Quan điểm của Đảng trong Đại hội toàn quốc lần VI (12/1986) là đổi mới kinh tế phải gắn liền với đổi mới về",
+        A: "quân sự.",
+        B: "tư tưởng.",
+        C: "chính trị.",
+        D: "văn hóa.",
+        correct: "C"
+    },
+    {
+        q: "Câu 4. Kết quả đạt được bước đầu của công cuộc đổi mới ở Việt Nam (1986-1990), trên thị trường loại hàng hóa nào dồi dào, đa dạng và lưu thông tương đối thuận lợi?",
+        A: "Công nghiệp.",
+        B: "Nhập khẩu.",
+        C: "Tiêu dùng.",
+        D: "Xuất khẩu.",
+        correct: "C"
+    },
+    {
+        q: "Câu 5. Bước ngoặt trong công cuộc xây dựng chủ nghĩa xã hội ở Việt Nam là",
+        A: "khủng hoảng năng lượng (1973).",
+        B: "đã giải phóng miền Nam (1975).",
+        C: "Đại hội Đảng lần thứ III (1960).",
+        D: "đề ra đường lối đổi mới (1986).",
+        correct: "D"
+    },
+    {
+        q: "Câu 6. Vì sao Đảng Cộng sản Việt Nam phải tiếp tục hoàn thiện, bổ sung đường lối Đổi mới được đề ra từ Đại hội đại biểu toàn quốc lần thứ VI (1986)?",
+        A: "Phù hợp với tình hình thực tế.",
+        B: "Do yêu cầu của Trung Quốc.",
+        C: "Điểm xuất phát còn quá thấp.",
+        D: "Đảm bảo an ninh-quốc phòng.",
+        correct: "A"
+    },
+    {
+        q: "Câu 7. Một trong những nguyên nhân trong giai đoạn đầu của thời kỳ đổi mới (1986-1990), Đảng Cộng sản Việt Nam chủ trương thực hiện Ba chương trình kinh tế lớn?",
+        A: "Giải quyết các nhu cầu thiết yếu cho Nhân dân.",
+        B: "Để đáp ứng nhu cầu nhiều xuất khẩu hàng hóa.",
+        C: "Giải quyết nhu cầu việc làm cho người lao động.",
+        D: "Tận dụng các lợi thế nguồn lao động trẻ, giá rẻ.",
+        correct: "A"
+    },
+    {
+        q: "Câu 8. Thành tựu đạt được bước đầu trong thực hiện kế hoạch nhà nước 5 năm (1986-1990) của công cuộc đổi mới đất nước chứng tỏ?",
+        A: "Đã phát huy được sức mạnh của một dân tộc.",
+        B: "Phương thức hoạt động của Đảng có sự đổi mới.",
+        C: "Quan hệ đối ngoại của Việt Nam được mở rộng.",
+        D: "Đường lối đổi mới của Đảng là đúng, phù hợp.",
+        correct: "D"
+    },
+    {
+        q: "Câu 9. Đại hội đại biểu toàn quốc lần thứ VI (12/1986) của Đảng Cộng sản Việt Nam được xem là Đại hội mở đầu cho công cuộc",
+        A: "xây dựng đoàn kết.",
+        B: "phát triển kinh tế.",
+        C: "đổi mới đất nước.",
+        D: "chỉnh đốn Đảng.",
+        correct: "C"
+    },
+    {
+        q: "Câu 10. Một trong những nội dung chính của đường lối đổi mới ở Việt Nam giai đoạn 1986 - 1995 là",
+        A: "đẩy mạnh công nghiệp hoá, hiện đại hoá đất nước, xây dựng và phát triển kinh tế tư nhân.",
+        B: "xây dựng Nhà nước pháp quyền Việt Nam của nhân dân, do nhân dân, vì nhân dân.",
+        C: "xây dựng và phát triển nền kinh tế thị trường định hướng xã hội chủ nghĩa gắn với phát triển văn hoá.",
+        D: "đa phương hoá, đa dạng hoá các quan hệ quốc tế, chủ động hội nhập kinh tế khu vực và thế giới.",
+        correct: "B"
+    },
+    {
+        q: "Câu 11. Trong Đại hội lần thứ mấy Đảng đã xác định Việt Nam chuyển sang thời kỳ công nghiệp hóa, hiện đại hóa?",
+        A: "VII.",
+        B: "XIII.",
+        C: "VIII.",
+        D: "XII.",
+        correct: "C"
+    },
+    {
+        q: "Câu 12. Đại hội đại biểu toàn quốc lần thứ VIII của Đảng đã xác định mục tiêu của công nghiệp hóa, hiện đại hóa đất nước là",
+        A: "đưa Việt Nam trở thành nước công nghiệp.",
+        B: "đưa Việt Nam trở thành cường quốc số một.",
+        C: "sẽ hoàn thành điện khí hóa vùng nông thôn.",
+        D: "phải xóa bỏ được tình trạng tham ô, lãng phí.",
+        correct: "A"
+    },
+    {
+        q: "Câu 13. Đại hội đại biểu toàn quốc lần thứ VIII của Đảng đã xác định nội dung nào sau đây là quốc sách hàng đầu?",
+        A: "Khoa học, giáo dục.",
+        B: "Giáo dục và đào tạo.",
+        C: "An ninh, quốc phòng.",
+        D: "Kinh tế và chính trị.",
+        correct: "B"
+    },
+    {
+        q: "Câu 14. Đại hội đại biểu toàn quốc lần thứ VIII của Đảng đã xác định yếu tố nào sau đây là nền tảng tinh thần của xã hội Việt Nam?",
+        A: "Kinh tế.",
+        B: "Chính trị.",
+        C: "Văn hóa.",
+        D: "Tư tưởng.",
+        correct: "C"
+    },
+    {
+        q: "Câu 15. Nội dung đường lối đổi mới của Đảng Cộng sản Việt Nam từ năm 2006 đến nay là",
+        A: "hoàn chỉnh toàn bộ quan điểm, đường lối đối ngoại và hội nhập kinh tế quốc tế ở Việt Nam.",
+        B: "phát triển nhận thức về chủ nghĩa xã hội và con đường đi lên chủ nghĩa xã hội ở Việt Nam.",
+        C: "khắc phục khủng hoảng nhận thức về đường lối cách mạng xã hội chủ nghĩa ở Việt Nam.",
+        D: "thực hiện thành công công cuộc xoá đói giảm nghèo và đưa Việt Nam trở thành một nước công nghiệp.",
+        correct: "B"
+    },
+    {
+        q: "Câu 16. Đường lối đổi mới ở Việt Nam từ năm 1986 đến nay chủ yếu được bổ sung, phát triển qua",
+        A: "kết luận của Ban Chấp hành Trung ương Đảng Cộng sản Việt Nam.",
+        B: "thông báo của Ban Chấp hành Trung ương Đảng Cộng sản Việt Nam.",
+        C: "các hội nghị định kì của Ban Chấp hành Trung ương Đảng Cộng sản Việt Nam.",
+        D: "các kì Đại hội đại biểu toàn quốc của Đảng Cộng sản Việt Nam.",
+        correct: "D"
+    },
+    {
+        q: "Câu 17. Nhận xét nào sau đây đúng khi nói về công cuộc Đổi mới đất nước được Đảng Cộng sản Việt Nam đề ra từ tháng 12/1986?",
+        A: "Đây là cuộc đổi mới từ dưới lên.",
+        B: "Công cuộc cải cách rất triệt để.",
+        C: "Cuộc đổi mới đất nước toàn diện.",
+        D: "Còn nhiều hạn chế khó khắc phục.",
+        correct: "A"
+    },
+    {
+        q: "Câu 18. Một trong những điểm giống nhau của công cuộc cải cách-mở cửa ở Trung Quốc (1978) với công cuộc Đổi mới ở Việt Nam (1986) là",
+        A: "chú trọng đổi mới về chính trị.",
+        B: "lấy đổi mới kinh tế là trọng tâm.",
+        C: "cải cách toàn diện trên lĩnh vực.",
+        D: "kinh tế kế hoạch hóa tập trung.",
+        correct: "B"
+    },
+    {
+        q: "Câu 19. Điểm giống nhau về bối cảnh thực hiện của công cuộc cải tổ ở Liên Xô (1990), cải cách-mở cửa ở Trung Quốc (1978) với công cuộc Đổi mới ở Việt Nam (1986) là",
+        A: "lấy phát triển kinh tế làm trọng tâm.",
+        B: "tập trung để sản xuất hàng tiêu dùng.",
+        C: "duy trì được thể chế ở nhà nước cũ.",
+        D: "đất nước đang rơi vào khủng hoảng.",
+        correct: "D"
+    },
+    {
+        q: "Câu 20. Đâu là bài học kinh nghiệm cơ bản được Đảng Cộng sản Việt Nam rút ra từ khi tiến hành công cuộc đổi mới đất nước (12-1986) đến nay?",
+        A: "Huy động cả hệ thống chính trị vào công cuộc đổi mới.",
+        B: "Tranh thủ sự giúp đỡ của các nước trong nhóm ASEAN.",
+        C: "Tập trung khắc phục tình trạng tham nhũng và lãng phí.",
+        D: "Đẩy mạnh các mối quan hệ đối ngoại hòa bình, ổn định.",
+        correct: "A"
+    }
+];
+
+let current = 0;
+let score = 0;
+let locked = false;
+let wrongQuestions = [];
+let isRedo = false;
+
+let activeQuestions = questions;
+
+function load() {
+    const q = activeQuestions[current];
+    question.innerText = q.q;
+    A.innerText = q.A;
+    B.innerText = q.B;
+    C.innerText = q.C;
+    D.innerText = q.D;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        r.checked = false;
+        r.parentElement.classList.remove("correct", "wrong");
+    });
+
+    result.innerText = "";
+    locked = false;
+}
+
+function next() {
+    if (locked) {
+        current++;
+        if (current < activeQuestions.length) {
+            load();
+        } else {
+            finishQuiz();
+        }
+        return;
+    }
+
+    const selected = document.querySelector("input[name='ans']:checked");
+    if (!selected) {
+        result.innerText = "Chọn câu trả lời!";
+        return;
+    }
+
+    const correct = activeQuestions[current].correct;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        if (r.value === correct) {
+            r.parentElement.classList.add("correct");
+        }
+        if (r.checked && r.value !== correct) {
+            r.parentElement.classList.add("wrong");
+        }
+    });
+
+    if (selected.value === correct) {
+        score++;
+    } else if (!isRedo) {
+        wrongQuestions.push(activeQuestions[current]);
+    }
+
+    result.innerText = "Nhấp Tiếp để tiếp tục";
+    locked = true;
+}
+
+function finishQuiz() {
+    let html = `
+        <h2>Finished</h2>
+        <p style="text-align:center;">
+            Score: ${score}/${activeQuestions.length}
+        </p>
+    `;
+
+    if (!isRedo && wrongQuestions.length > 0) {
+        html += `
+            <button onclick="redoWrong()">Sửa lỗi</button>
+        `;
+    } else {
+        html += `
+            <p style="text-align:center;">Tốt lắm 🎉</p>
+            <a href="index.html">⬅ Back</a>
+        `;
+    }
+
+    document.querySelector(".quiz-box").innerHTML = html;
+}
+
+function redoWrong() {
+    activeQuestions = wrongQuestions;
+    wrongQuestions = [];
+    current = 0;
+    score = 0;
+    isRedo = true;
+
+    document.querySelector(".quiz-box").innerHTML = `
+        <h2>Fix Mistakes</h2>
+        <p class="question" id="question"></p>
+
+        <div class="answers">
+          <label>
+            <input type="radio" name="ans" value="A">
+            <span id="A"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="B">
+            <span id="B"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="C">
+            <span id="C"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="D">
+            <span id="D"></span>
+          </label>
+        </div>
+
+        <button onclick="next()">Tiếp</button>
+        <div class="result" id="result"></div>
+    `;
+    load();
+}
+
+
+load();
+</script>
+
+
+</body>
+</html>
