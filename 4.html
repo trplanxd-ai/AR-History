@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Đường lối Đổi mới (1986)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<nav class="navbar">
+  <div class="nav-left">
+    <span class="logo"><img src="camlelogo.png" width=80px> AR History Quiz</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="about.html">Giới thiệu</a>
+    <a href="data.html">Dữ liệu</a>
+    <a href="https://thptcamle.edu.vn/" target="_blank">Trường học</a>
+    <a href="index.html" class="start-btn">Vào làm bài</a>
+  </div>
+
+</nav>
+
+
+<div class="container">
+  <div class="quiz-box">
+    <h2>Đường lối Đổi mới (1986)</h2>
+
+    <p class="question" id="question"></p>
+
+    <div class="answers">
+      <label>
+        <input type="radio" name="ans" value="A">
+        <span id="A"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="B">
+        <span id="B"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="C">
+        <span id="C"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="D">
+        <span id="D"></span>
+      </label>
+    </div>
+
+    <button onclick="next()">Tiếp</button>
+    <div class="result" id="result"></div>
+  </div>
+</div>
+
+
+<script>
+const questions = [
+    {
+        q: "Câu 1: Điền từ còn thiếu vào chỗ trống: \“Đảng Cộng sản Việt Nam là đội tiền phong của giai cấp công nhân, đồng thời là đội tiền phong của nhân dân lao động và của dân tộc Việt Nam, đại biểu trung thành lợi ích của giai cấp công nhân, nhân dân lao động và của dân tộc. Đảng lấy chủ nghĩa Mác - Lênin và Tư tưởng Hồ Chí Minh làm nền tảng tư tưởng, kim chỉ nam cho hành động, lấy ……làm nguyên tắc tổ chức cơ bản\” (Văn kiện Đại hội XI của Đảng)",
+        A: "Phê bình và tự phê bình",
+        B: "Tập trung dân chủ",
+        C: "Đoàn kết thống nhất trong Đảng",
+        D: "Kỷ luật nghiêm minh, tự giác",
+        correct: "B"
+    },
+    {
+        q: "Câu 2: Đối tượng nghiên cứu của khoa học Lịch sử Đảng Cộng sản Việt Nam là:",
+        A: "Các cán bộ, đảng viên Đảng Cộng sản Việt Nam",
+        B: "Những mặt hạn chế trong quá trình lãnh đạo của Đảng",
+        C: "Sự ra đời, phát triển và hoạt động lãnh đạo của Đảng qua các thời kỳ lịch sử",
+        D: "Các văn kiện của Đảng chuẩn bị được lưu hành",
+        correct: "C"
+    },
+    {
+        q: "Câu 3: Là một ngành của khoa học lịch sử, Lịch sử Đảng Cộng sản Việt Nam có các chức năng, nhiệm vụ của khoa học lịch sử, đồng thời còn có thêm các chức năng nổi bật khác là:",
+        A: "Chức năng nhận thức, điều tiết, chọn lọc và tìm kiếm",
+        B: "Chức năng nhận thức, giáo dục, dự báo và phê phán",
+        C: "Chức năng tuyên truyền, phổ cập, giáo huấn và phổ quát",
+        D: "Chức năng giáo dục, sàng lọc, tuyên truyền và tìm kiếm",
+        correct: "B"
+    },
+    {
+        q: "Câu 4: Một trong những nhiệm vụ hàng đầu khi nghiên cứu khoa học Lịch sử Đảng Cộng sản Việt Nam là:",
+        A: "Khẳng định, chứng minh giá trị khoa học của những mục tiêu chiến lược và sách lược cách mạng mà Đảng đề ra trong cương lĩnh",
+        B: "Làm cho người học hiểu được quyền lực của Đảng, từ đó thêm trung thành với đường lối lãnh đạo của Đảng",
+        C: "Chọn lọc ra những sự kiện lịch sử nổi bật để tái hiện lại sự thành công trong quá trình lãnh đạo của Đảng",
+        D: "Tìm hiểu về lịch sử ra đời của đảng cộng sản trên thế giới",
+        correct: "A"
+    },
+    {
+        q: "Câu 5: Trong phương pháp nghiên cứu, học tập môn học Lịch sử Đảng Cộng sản Việt Nam cần phải dựatrên phương pháp luận khoa học mác-xít, đồng thời phải nắm vững chủ nghĩa nào dưới đây để xem xét và nhận thức lịch sử một cách khách quan, trung thực và đúng quy luật?",
+        A: "Chủ nghĩa duy vật biện chứng và chủ nghĩa duy vật lịch sử",
+        B: "Chủ nghĩa duy vật và chủ nghĩa duy tâm",
+        C: "Chủ nghĩa duy lý và chủ nghĩa duy vật biện chứng",
+        D: "Chủ nghĩa duy lý và chủ nghĩa duy vật lịch sử",
+        correct: "A"
+    },
+    {
+        q: "Câu 6: Tại sao khi nghiên cứu, học tập Lịch sử Đảng Cộng sản Việt Nam lại cần phải nhận thức và vận dụng chủ nghĩa duy vật lịch sử?",
+        A: "Để thấy được sự ưu việt của Đảng Cộng sản Việt Nam so với các đảng phái ở phương Tây",
+        B: "Để nhận thức tiến trình cách mạng do Đảng Cộng sản Việt Nam lãnh đạo",
+        C: "Để hiểu được sứ mệnh lịch sử của giai cấp nông dân trong lãnh đạo cách mạng",
+        D: "Để hiểu vì sao cách mạng giải phóng dân tộc ở Việt Nam đi theo con đường tư sản",
+        correct: "B"
+    },
+    {
+        q: "Câu 7: Trong nghiên cứu Lịch sử Đảng Cộng sản Việt Nam, khi xem xét, đối chiếu các hiện tượng lịch sử trong hình thức tổng quát nhằm mục đích vạch ra bản chất, quy luật, khuynh hướng chung trong sự vận động của sự vật thì đó là cách nghiên cứu dựa trên:",
+        A: "Phương pháp lịch sử",
+        B: "Phương pháp chọn lọc",
+        C: "Phương pháp làm việc nhóm",
+        D: "Phương pháp logic",
+        correct: "D"
+    },
+    {
+        q: "Câu 8: Cần phải coi trọng phương pháp tổng kết thực tiễn lịch sử gắn với nghiên cứu lý luận trong nghiên cứu Lịch sử Đảng Cộng sản Việt Nam để:",
+        A: "Làm rõ kinh nghiệm, bài học, quy luật phát triển của cách mạng Việt Nam",
+        B: "Làm hài lòng người dân trong quá trình lãnh đạo cách mạng của Đảng",
+        C: "Dễ dàng thống kê những thành tựu mà Đảng đạt được trong lãnh đạo cách mạng",
+        D: "Chứng tỏ sự linh hoạt trong các bước đề ra đường lối, chủ trương của Đảng",
+        correct: "A"
+    },
+    {
+        q: "Câu 9: Việc tiến hành thảo luận, trao đổi các vấn đề do giảng viên đưa ra để có thể hiểu rõ hơn nội dung của môn học Lịch sử Đảng Cộng sản Việt Nam thì được gọi là:",
+        A: "Phương pháp làm việc khách quan",
+        B: "Phương pháp làm việc nhóm",
+        C: "DPhương pháp làm việc chủ quan",
+        D: "Phương pháp làm việc biện chứng",
+        correct: "B"
+    },
+    {
+        q: "Câu 10: Một trong những ý nghĩa của việc nghiên cứu, học tập môn học Lịch sử Đảng Cộng sản Việt Nam đối với sinh viên là:",
+        A: "Tích cực cổ vũ, tham gia vào quá trình “tự diễn biến”, “tự chuyển hoá” trong Đảng",
+        B: "Giáo dục lý tưởng, truyền thống đấu tranh của Đảng, bồi đắp niềm tin vào sự lãnh đạo của Đảng",
+        C: "Tin vào sự lãnh đạo của Đảng đưa đất nước tiến nhanh, mạnh, vững chắc theo con đường tư bản chủ nghĩa",
+        D: "Tham gia xây dựng cải cách, cải tổ Đảng theo mô hình của Đông Âu và Liên Xô nhằm làm cho Đảng thêm vững mạnh",
+        correct: "B"
+    },
+    {
+        q: "Câu 11: Mâu thuẫn cơ bản của xã hội Việt Nam kể từ khi Pháp xâm lược là gì?",
+        A: "Mâu thuẫn giữa dân tộc ta với thực dân Pháp, mâu thuẫn giữa nông dân với địa chủ phong kiến",
+        B: "Mâu thuẫn giữa công nhân với tư bản, mâu thuẫn giữa nông dân với địa chủ phong kiến",
+        C: "Mâu thuẫn giữa nông dân với địa chủ phong kiến, mâu thuẫn giữa tư sản với vô sản",
+        D: "Mâu thuẫn giữa nông dân, công nhân với địa chủ phong kiến",
+        correct: "A"
+    },
+    {
+        q: "Câu 12: Ở Việt Nam, giai cấp mới nào đã ra đời dưới tác động của cuộc khai thác thuộc địa lần thứ nhất (1897 - 1914) của thực dân Pháp?",
+        A: "Tư sản",
+        B: "Nông dân",
+        C: "Công dân",
+        D: "Tiểu tư sản",
+        correct: "C"
+    },
+    {
+        q: "Câu 13: Trước khi thực dân Pháp nổ súng xâm lược (1858), xã hội Việt Nam có những giai cấp cơ bản nào?",
+        A: "Địa chủ phong kiến và nông dân",
+        B: "Địa chủ phong kiến và công nhân",
+        C: "Công nhân và nông dân",
+        D: "Nông dân và tri thức",
+        correct: "A"
+    },
+    {
+        q: "Câu 14: Các phong trào yêu nước ở Việt Nam trước khi có Đảng Cộng sản lãnh đạo có điểm chung là:",
+        A: "Không nhận được sự ủng hộ của người dân, đặc biệt là giai cấp công - nông",
+        B: "Không thông qua ý kiến của Quốc tế Cộng sản, đặc biệt Đảng Cộng sản Liên Xô",
+        C: "Không có đường lối rõ ràng dẫn đến thất bại và bị thực dân Pháp đàn áp một cách nặng nề",
+        D: "Không có đủ tiềm lực tài chính và người đứng đầu lãnh đạo cách mạng",
+        correct: "C"
+    },
+    {
+        q: "Câu 15: Thực dân Pháp đã thực hiện chính sách gì về văn hoá xã hội để cai trị nước ta?",
+        A: "Ngu dân",
+        B: "Bế quan toả cảng",
+        C: "Đốt sách chôn Nho",
+        D: "Chia để trị",
+        correct: "A"
+    },
+      {
+        q: "Câu 16: Tầng lớp tư sản mại bản của Việt Nam dưới thời Pháp thuộc có đặc điểm là:",
+        A: "Có sự tham gia vào đời sống chính trị, kinh tế của chính quyền thực dân Pháp",
+        B: "Có tiềm lực kinh tế mạnh, là giai cấp đông đảo nhất trong xã hội",
+        C: "Không có tư liệu sản xuất, phải bán sức lao động trong các nhà máy, xí nghiệp",
+        D: "Chịu ba tầng áp bức, bóc lột: đế quốc, phong kiến và tư sản dân tộc",
+        correct: "A"
+    },
+      {
+        q: "Câu 17: Chiến dịch giải phóng Sài Gòn – Gia Định còn có tên gọi khác là gì?",
+        A: "Năm 1920, khi tổ chức công hội ở Sài Gòn được thành lập",
+        B: "Năm 1925, khi cuộc bãi công ở nhà máy Ba Son diễn ra rầm rộ",
+        C: "Năm 1929, khi có sự ra đời của ba tổ chức cộng sản",
+        D: "Năm 1930, khi Đảng Cộng sản Việt Nam ra đời",
+        correct: "D"
+    }
+];
+
+let current = 0;
+let score = 0;
+let locked = false;
+let wrongQuestions = [];
+let isRedo = false;
+
+let activeQuestions = questions;
+
+function load() {
+    const q = activeQuestions[current];
+    question.innerText = q.q;
+    A.innerText = q.A;
+    B.innerText = q.B;
+    C.innerText = q.C;
+    D.innerText = q.D;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        r.checked = false;
+        r.parentElement.classList.remove("correct", "wrong");
+    });
+
+    result.innerText = "";
+    locked = false;
+}
+
+function next() {
+    if (locked) {
+        current++;
+        if (current < activeQuestions.length) {
+            load();
+        } else {
+            finishQuiz();
+        }
+        return;
+    }
+
+    const selected = document.querySelector("input[name='ans']:checked");
+    if (!selected) {
+        result.innerText = "Chọn câu trả lời!";
+        return;
+    }
+
+    const correct = activeQuestions[current].correct;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        if (r.value === correct) {
+            r.parentElement.classList.add("correct");
+        }
+        if (r.checked && r.value !== correct) {
+            r.parentElement.classList.add("wrong");
+        }
+    });
+
+    if (selected.value === correct) {
+        score++;
+    } else if (!isRedo) {
+        wrongQuestions.push(activeQuestions[current]);
+    }
+
+    result.innerText = "Nhấp Tiếp để tiếp tục";
+    locked = true;
+}
+
+function finishQuiz() {
+    let html = `
+        <h2>Finished</h2>
+        <p style="text-align:center;">
+            Score: ${score}/${activeQuestions.length}
+        </p>
+    `;
+
+    if (!isRedo && wrongQuestions.length > 0) {
+        html += `
+            <button onclick="redoWrong()">Sửa lỗi</button>
+        `;
+    } else {
+        html += `
+            <p style="text-align:center;">Tốt lắm 🎉</p>
+            <a href="index.html">⬅ Back</a>
+        `;
+    }
+
+    document.querySelector(".quiz-box").innerHTML = html;
+}
+
+function redoWrong() {
+    activeQuestions = wrongQuestions;
+    wrongQuestions = [];
+    current = 0;
+    score = 0;
+    isRedo = true;
+
+    document.querySelector(".quiz-box").innerHTML = `
+        <h2>Fix Mistakes</h2>
+        <p class="question" id="question"></p>
+
+        <div class="answers">
+          <label>
+            <input type="radio" name="ans" value="A">
+            <span id="A"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="B">
+            <span id="B"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="C">
+            <span id="C"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="D">
+            <span id="D"></span>
+          </label>
+        </div>
+
+        <button onclick="next()">Tiếp</button>
+        <div class="result" id="result"></div>
+    `;
+    load();
+}
+
+
+load();
+</script>
+
+
+</body>
+</html>
