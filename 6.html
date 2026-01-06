@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Chiến thắng lịch sử Điện Biên Phủ</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<nav class="navbar">
+  <div class="nav-left">
+    <span class="logo"><img src="camlelogo.png" width=80px> AR History Quiz</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="about.html">Giới thiệu</a>
+    <a href="data.html">Dữ liệu</a>
+    <a href="https://thptcamle.edu.vn/" target="_blank">Trường học</a>
+    <a href="index.html" class="start-btn">Vào làm bài</a>
+  </div>
+
+</nav>
+
+
+<div class="container">
+  <div class="quiz-box">
+    <h2>Chiến thắng lịch sử Điện Biên Phủ</h2>
+
+    <p class="question" id="question"></p>
+
+    <div class="answers">
+      <label>
+        <input type="radio" name="ans" value="A">
+        <span id="A"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="B">
+        <span id="B"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="C">
+        <span id="C"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="D">
+        <span id="D"></span>
+      </label>
+    </div>
+
+    <button onclick="next()">Tiếp</button>
+    <div class="result" id="result"></div>
+  </div>
+</div>
+
+
+<script>
+const questions = [
+    {
+        q: "Câu 1: Chiến dịch Điện Biên Phủ diễn ra trong",
+        A: "56 ngày đêm",
+        B: "56 ngày",
+        C: "65 ngày",
+        D: "65 ngày đêm",
+        correct: "A"
+    },
+    {
+        q: "Câu 2: Tướng Đờ Ca-xtơ-ri và Bộ chỉ huy tập đoàn điểm Điện Biên Phủ bị bắt sống vào lúc",
+        A: "17 giờ ngày 7-5-1954",
+        B: "17 giờ 30 phút ngày 6-5-1954",
+        C: "17 giờ 30 phút ngày 7-5-1954",
+        D: "17 giờ ngày 5-7-1954",
+        correct: "C"
+    },
+    {
+        q: "Câu 3: Trái bộc phá nổ ở đồi A1 vào",
+        A: "chiều ngày 1-5-1954",
+        B: "tối ngày 6-5-1954",
+        C: "sáng ngày 6-5-1954",
+        D: "ngày 6-5-1954",
+        correct: "B"
+    },
+    {
+        q: "Câu 4: Mở đầu chiến dịch Điện Biên Phủ, quân ta tấn công tiêu diệt vị trí phòng ngự của địch ở",
+        A: "phía bắc",
+        B: "phía nam",
+        C: "phía đông",
+        D: "phía bắc và phía nam",
+        correct: "A"
+    },
+    {
+        q: "Câu 5: Đợt tấn công thứ ba của quân ta bắt đầu",
+        A: "ngày 6-5-1954",
+        B: "ngày 26-4-1954",
+        C: "ngày 30-3-1954",
+        D: "ngày 1-5-1954",
+        correct: "D"
+    },
+    {
+        q: "Câu 6: Cụm từ đánh giá chiến thắng Điện Biên Phủ là",
+        A: "mốc son chói lọi",
+        B: "góp phần kết thúc",
+        C: "địch lũ lượt giương cờ trắng ra hàng",
+        D: "mốc son chói lọi góp phần kết thúc",
+        correct: "D"
+    },
+    {
+        q: "Câu 7: Có bao nhiêu người từ hậu phương tham gia phục vụ chiến dịch?",
+        A: "Hàng vạn",
+        B: "Hơn nửa triệu",
+        C: "Gần ba vạn",
+        D: "Ba vạn",
+        correct: "C"
+    },
+    {
+        q: "Câu 8: Trong đợt 2 của chiến dịch Điện Biên Phủ, cuộc chiến đấu diễn ra ác liệt ở",
+        A: "các cứ điểm phía đông",
+        B: "đồi C1",
+        C: "đồi C1 và A1",
+        D: "đồi A1",
+        correct: "C"
+    },
+    {
+        q: "Câu 9: Quân ta nổ súng mở đầu chiến dịch Điện Biên Phủ vào",
+        A: "ngày 30-3-1954",
+        B: "ngày 1-5-1954",
+        C: "ngày 6-5-1954",
+        D: "ngày 13-3-1954",
+        correct: "D"
+    },
+    {
+        q: "Câu 10: Đợt tấn công thứ hai của quân ta kết thúc vào",
+        A: "ngày 26-4-1954",
+        B: "ngày 30-3-1954",
+        C: "ngày 13-3-1954",
+        D: "ngày 1-5-1954",
+        correct: "A"
+    },
+    {
+        q: "Câu 11: Có bao nhiêu vũ khí được chuẩn bị cho chiến dịch Điện Biên Phủ?",
+        A: "Hơn nửa triệu",
+        B: "Hàng vạn tấn",
+        C: "Gần ba vạn tấn",
+        D: "Ba vạn tấn",
+        correct: "B"
+    },
+    {
+        q: "Câu 12: Anh Phan Đình Giót đã lấy thân mình lấp lỗ châu mai trong trận đánh ở",
+        A: "Độc Lập",
+        B: "Bản Kéo",
+        C: "Him Lam",
+        D: "Him Lam, Bản Kéo",
+        correct: "C"
+    },
+    {
+        q: "Câu 13: Đợt tấn công thứ hai của quân ta bắt đầu từ",
+        A: "ngày 13-3-1954",
+        B: "ngày 30-3-1954",
+        C: "ngày 1-5-1954",
+        D: "ngày 26-4-1954",
+        correct: "B"
+    },
+    {
+        q: "Câu 14: Có bao nhiêu chiến sĩ tiến về Điện Biên Phủ?",
+        A: "Khoảng năm vạn rưỡi",
+        B: "Hàng vạn",
+        C: "Gần ba vạn",
+        D: "Hai vạn",
+        correct: "A"
+    },
+    {
+        q: "Câu 15: Cụm từ nào thể hiện cuộc chiến đấu ác liệt trong đợt hai của chiến dịch Điện Biên Phủ?",
+        A: "uy hiếp",
+        B: "thuộc quyền kiểm soát",
+        C: "kháng cự quyết định",
+        D: "giành giật",
+        correct: "D"
+    },
+    {
+        q: "Câu 16: Trung ương Đảng và Bác Hồ họp, nêu quyết tâm giành thắng lợi trong chiến dịch Điện Biên Phủ lúc nào?",
+        A: "Năm 1953",
+        B: "Mùa đông năm 1953",
+        C: "Mùa xuân năm 1953",
+        D: "Cuối năm 1953",
+        correct: "B"
+    }
+];
+
+let current = 0;
+let score = 0;
+let locked = false;
+let wrongQuestions = [];
+let isRedo = false;
+
+let activeQuestions = questions;
+
+function load() {
+    const q = activeQuestions[current];
+    question.innerText = q.q;
+    A.innerText = q.A;
+    B.innerText = q.B;
+    C.innerText = q.C;
+    D.innerText = q.D;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        r.checked = false;
+        r.parentElement.classList.remove("correct", "wrong");
+    });
+
+    result.innerText = "";
+    locked = false;
+}
+
+function next() {
+    if (locked) {
+        current++;
+        if (current < activeQuestions.length) {
+            load();
+        } else {
+            finishQuiz();
+        }
+        return;
+    }
+
+    const selected = document.querySelector("input[name='ans']:checked");
+    if (!selected) {
+        result.innerText = "Chọn câu trả lời!";
+        return;
+    }
+
+    const correct = activeQuestions[current].correct;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        if (r.value === correct) {
+            r.parentElement.classList.add("correct");
+        }
+        if (r.checked && r.value !== correct) {
+            r.parentElement.classList.add("wrong");
+        }
+    });
+
+    if (selected.value === correct) {
+        score++;
+    } else if (!isRedo) {
+        wrongQuestions.push(activeQuestions[current]);
+    }
+
+    result.innerText = "Nhấp Tiếp để tiếp tục";
+    locked = true;
+}
+
+function finishQuiz() {
+    let html = `
+        <h2>Finished</h2>
+        <p style="text-align:center;">
+            Score: ${score}/${activeQuestions.length}
+        </p>
+    `;
+
+    if (!isRedo && wrongQuestions.length > 0) {
+        html += `
+            <button onclick="redoWrong()">Sửa lỗi</button>
+        `;
+    } else {
+        html += `
+            <p style="text-align:center;">Tốt lắm 🎉</p>
+            <a href="index.html">⬅ Back</a>
+        `;
+    }
+
+    document.querySelector(".quiz-box").innerHTML = html;
+}
+
+function redoWrong() {
+    activeQuestions = wrongQuestions;
+    wrongQuestions = [];
+    current = 0;
+    score = 0;
+    isRedo = true;
+
+    document.querySelector(".quiz-box").innerHTML = `
+        <h2>Fix Mistakes</h2>
+        <p class="question" id="question"></p>
+
+        <div class="answers">
+          <label>
+            <input type="radio" name="ans" value="A">
+            <span id="A"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="B">
+            <span id="B"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="C">
+            <span id="C"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="D">
+            <span id="D"></span>
+          </label>
+        </div>
+
+        <button onclick="next()">Tiếp</button>
+        <div class="result" id="result"></div>
+    `;
+    load();
+}
+
+
+load();
+</script>
+
+
+</body>
+</html>
