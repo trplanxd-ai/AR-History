@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cách mạng tháng Tám (1945)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<nav class="navbar">
+  <div class="nav-left">
+    <span class="logo"><img src="camlelogo.png" width=80px> AR History Quiz</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="about.html">Giới thiệu</a>
+    <a href="data.html">Dữ liệu</a>
+    <a href="https://thptcamle.edu.vn/" target="_blank">Trường học</a>
+    <a href="index.html" class="start-btn">Vào làm bài</a>
+  </div>
+
+</nav>
+
+
+<div class="container">
+  <div class="quiz-box">
+    <h2>Cách mạng tháng Tám (1945)</h2>
+
+    <p class="question" id="question"></p>
+
+    <div class="answers">
+      <label>
+        <input type="radio" name="ans" value="A">
+        <span id="A"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="B">
+        <span id="B"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="C">
+        <span id="C"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="D">
+        <span id="D"></span>
+      </label>
+    </div>
+
+    <button onclick="next()">Tiếp</button>
+    <div class="result" id="result"></div>
+  </div>
+</div>
+
+
+<script>
+const questions = [
+    {
+        q: "Câu 1. Một trong những địa phương giành được chính quyền sớm nhất trong Tổng khởi nghĩa tháng Tám năm 1945 là:",
+        A: "Cao Bằng",
+        B: "Hải Dương",
+        C: "Nam Định",
+        D: "Thanh Hóa",
+        correct: "B"
+    },
+    {
+        q: "Câu 2. Những địa phương giành được chính quyền sớm nhất trong cả nước trong Tổng khởi nghĩa tháng Tám năm 1945 là:",
+        A: "Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam",
+        B: "Thái Nguyên, Bắc Giang, Hải Dương, Hà Nội",
+        C: "Hà Nội, Huế, Sài Gòn, Quảng Nam, Đà Nẵng",
+        D: "Cao Bằng, Hà Giang, Bắc Giang, Hải Dương",
+        correct: "A"
+    },
+    {
+        q: "Câu 3. Một trong những địa phương giành chính quyền sau cùng trong Tổng khởi nghĩa tháng Tám năm 1945 là:",
+        A: "Bến Tre",
+        B: "Bình Định",
+        C: "Hà Tiên",
+        D: "Cần Thơ",
+        correct: "C"
+    },
+    {
+        q: "Câu 4. Một trong những địa phương giành chính quyền sau cùng trong Tổng khởi nghĩa tháng Tám năm 1945 là:",
+        A: "Bến Tre",
+        B: "Bình Định",
+        C: "Đồng Nai Thượng",
+        D: "Cần Thơ",
+        correct: "C"
+    },
+    {
+        q: "Câu 5. Những địa phương giành chính quyền sau cùng trong Tổng khởi nghĩa tháng Tám năm 1945 là:",
+        A: "Bến Tre, Long An",
+        B: "Bình Định, Ninh Thuận",
+        C: "Đồng Nai Thượng, Hà Tiên",
+        D: "Cần Thơ, Hà Tiên",
+        correct: "C"
+    },
+    {
+        q: "Câu 6. Ngày 13/8/1945, Trung ương Đảng và Tổng bộ Việt Minh đã thông qua quyết định nào dưới đây?",
+        A: "Quyết định khởi nghĩa ở Hà Nội",
+        B: "Phát động cao trào kháng Nhật",
+        C: "Thống nhất lực lượng vũ trang Việt Nam",
+        D: "Phát lệnh Tổng khởi nghĩa trên cả nước",
+        correct: "D"
+    },
+    {
+        q: "Câu 7. Hội nghị toàn quốc của Đảng Cộng sản Đông Dương họp ở Tân Trào (14–15/8/1945) đã thông qua kế hoạch nào sau đây?",
+        A: "Thống nhất các lực lượng vũ trang",
+        B: "Quyết định khởi nghĩa ở Hà Nội",
+        C: "Lãnh đạo toàn dân Tổng khởi nghĩa",
+        D: "Giải phóng dân tộc trong năm 1945",
+        correct: "C"
+    },
+    {
+        q: "Câu 8. Sự kiện nào sau đây đánh dấu nước Việt Nam Dân chủ Cộng hòa được thành lập?",
+        A: "Hồ Chí Minh đọc Tuyên ngôn Độc lập (2/9/1945)",
+        B: "Đại hội quốc dân họp ở Tân Trào (8/1945)",
+        C: "Hội nghị đại biểu toàn quốc của Đảng (8/1945)",
+        D: "Tiến hành Tổng tuyển cử bầu Quốc hội (1/1946)",
+        correct: "A"
+    },
+    {
+        q: "Câu 9. Ngày 2-9-1945, tại Quảng trường Ba Đình (Hà Nội), Chủ tịch Hồ Chí Minh",
+        A: "phát lệnh Tổng khởi nghĩa",
+        B: "đọc Lời kêu gọi toàn quốc kháng chiến",
+        C: "công bố Chỉ thị Toàn dân kháng chiến",
+        D: "đọc bản Tuyên ngôn Độc lập",
+        correct: "D"
+    },
+    {
+        q: "Câu 10. Cách mạng tháng Tám năm 1945 ở Việt Nam thành công đã",
+        A: "làm thất bại học thuyết Aixenhao",
+        B: "làm thất bại học thuyết Níchxơn",
+        C: "làm thất bại học thuyết Kennơđi",
+        D: "lập nên nước Việt Nam Dân chủ Cộng hòa",
+        correct: "D"
+    },
+    {
+        q: "Câu 11. Nội dung nào dưới đây là điều kiện khách quan thuận lợi cho Cách mạng tháng Tám nổ ra?",
+        A: "Chiến tranh thế giới thứ hai bùng nổ",
+        B: "Phát xít Đức đầu hàng Đồng minh",
+        C: "Mỹ ném bom nguyên tử xuống Nhật Bản",
+        D: "Nhật đầu hàng Đồng minh vô điều kiện",
+        correct: "D"
+    },
+    {
+        q: "Câu 12. Lực lượng thân Nhật nào sau đây tồn tại ở Việt Nam trước khi Cách mạng tháng Tám nổ ra?",
+        A: "Chính phủ Trần Trọng Kim",
+        B: "Bọn Việt Quốc, Việt Cách",
+        C: "Chính quyền Ngô Đình Diệm",
+        D: "Chính quyền độc tài Batixta",
+        correct: "A"
+    },
+    {
+        q: "Câu 13. Sự kiện nào dưới đây đánh dấu chế độ phong kiến ở Việt Nam đã sụp đổ hoàn toàn?",
+        A: "Giành được chính quyền ở Hà Nội",
+        B: "Khởi nghĩa thắng lợi trong cả nước",
+        C: "Vua Bảo Đại tuyên bố thoái vị",
+        D: "Hồ Chí Minh đọc Tuyên ngôn Độc lập",
+        correct: "C"
+    },
+    {
+        q: "Câu 14. Ngày 30-8-1945, vua Bảo Đại tuyên bố thoái vị là sự kiện đánh dấu",
+        A: "nhiệm vụ dân tộc của cách mạng hoàn thành",
+        B: "nhiệm vụ dân chủ của cách mạng hoàn thành",
+        C: "chế độ phong kiến Việt Nam sụp đổ hoàn toàn",
+        D: "Tổng khởi nghĩa giành thắng lợi trên cả nước",
+        correct: "C"
+    },
+    {
+        q: "Câu 15. Chiều ngày 16-8-1945, theo lệnh của Ủy ban khởi nghĩa, một đơn vị Giải phóng quân do Võ Nguyên Giáp chỉ huy, xuất phát từ Tân Trào tiến về giải phóng",
+        A: "thị xã Cao Bằng",
+        B: "thị xã Thái Nguyên",
+        C: "thị xã Tuyên Quang",
+        D: "thị xã Lào Cai",
+        correct: "B"
+    },
+    {
+        q: "Câu 16. Vị vua cuối cùng của chế độ quân chủ ở Việt Nam là:",
+        A: "Tự Đức",
+        B: "Hàm Nghi",
+        C: "Duy Tân",
+        D: "Bảo Đại",
+        correct: "D"
+    },
+    {
+        q: "Câu 17. Người soạn thảo bản Tuyên ngôn Độc lập của nước Việt Nam Dân chủ Cộng hòa là",
+        A: "Trần Phú",
+        B: "Trường Chinh",
+        C: "Hồ Chí Minh",
+        D: "Võ Nguyên Giáp",
+        correct: "C"
+    },
+    {
+        q: "Câu 18. Bản Tuyên ngôn Độc lập được Chủ tịch Hồ Chí Minh đọc tại",
+        A: "Nhà hát lớn Hà Nội",
+        B: "Khu giải phóng Việt Bắc",
+        C: "Dinh Độc Lập",
+        D: "Quảng trường Ba Đình",
+        correct: "D"
+    },
+    {
+        q: "Câu 19. Các đại biểu đều nhất trí tán thành chủ trương Tổng khởi nghĩa của Đảng, cử ra Ủy ban Dân tộc giải phóng Việt Nam do Hồ Chí Minh làm Chủ tịch, đó là quyết định của:",
+        A: "Hội nghị toàn quốc của Đảng họp ở Tân Trào (15-8-1945)",
+        B: "Đại hội quốc dân ở Tân Trào (16-8-1945)",
+        C: "Đại hội Đảng lần thứ I ở Ma Cao (1935)",
+        D: "Hội nghị Quân sự cách mạng Bắc Kì (4-1945)",
+        correct: "B"
+    },
+    {
+        q: "Câu 20. Ngày 13/8/1945, ngay khi nhận được tin Nhật Bản sắp đầu hàng Đồng minh, Trung ương Đảng và Tổng bộ Việt Minh đã thành lập cơ quan nào?",
+        A: "Ủy ban lâm thời Khu giải phóng",
+        B: "Ủy ban Dân tộc giải phóng Việt Nam",
+        C: "Ủy ban Khởi nghĩa toàn quốc",
+        D: "Ủy ban Quân sự cách mạng Bắc Kì",
+        correct: "C"
+    },
+    {
+        q: "Câu 21. Thời cơ khách quan thuận lợi của Cách mạng tháng Tám là sự kiện nào sau đây?",
+        A: "Nhật đảo chính Pháp trên toàn Đông Dương (9/3/1945)",
+        B: "Mỹ ném hai quả bom nguyên tử xuống Nhật",
+        C: "Đức đầu hàng Đồng minh vô điều kiện",
+        D: "Phát xít Nhật đầu hàng Đồng minh vô điều kiện",
+        correct: "D"
+    },
+    {
+        q: "Câu 22. Đảng Cộng sản Đông Dương quyết định Tổng khởi nghĩa giành chính quyền trong cả nước khi",
+        A: "Nhật đảo chính Pháp trên toàn Đông Dương",
+        B: "Nhật tuyên bố đầu hàng Đồng minh vô điều kiện",
+        C: "Phe Đồng minh phản công trên các mặt trận",
+        D: "Liên quân Anh–Mĩ tấn công Nhật Bản",
+        correct: "B"
+    },
+    {
+        q: "Câu 23. Tổ chức cách mạng nào đã lãnh đạo nhân dân ta tiến hành Cách mạng tháng Tám giành thắng lợi?",
+        A: "Đảng Cộng sản Đông Dương",
+        B: "Đảng Lao động Việt Nam",
+        C: "Việt Nam Quốc dân Đảng",
+        D: "Đảng Cộng sản Việt Nam",
+        correct: "A"
+    },
+    {
+        q: "Câu 24. Một trong những nguyên nhân khách quan dẫn tới thắng lợi của Cách mạng tháng Tám (1945) là",
+        A: "sự giúp đỡ của Liên Xô, Trung Quốc",
+        B: "sự chuẩn bị của Đảng trong 15 năm",
+        C: "những thắng lợi của quân Đồng minh",
+        D: "truyền thống yêu nước của dân tộc",
+        correct: "C"
+    },
+    {
+        q: "Câu 25. Trong Tổng khởi nghĩa tháng Tám năm 1945, thắng lợi ở Hà Nội, Huế, Sài Gòn có ý nghĩa như thế nào?",
+        A: "Giúp Tổng khởi nghĩa thắng lợi trong cả nước",
+        B: "Ảnh hưởng lớn và quyết định đến các địa phương khác",
+        C: "Là những cuộc khởi nghĩa hình mẫu",
+        D: "Đánh dấu Cách mạng tháng Tám thắng lợi hoàn toàn",
+        correct: "B"
+    },
+    {
+        q: "Câu 26. Nội dung nào sau đây là bài học kinh nghiệm trong lãnh đạo Tổng khởi nghĩa năm 1945 của Đảng Cộng sản Đông Dương?",
+        A: "Xây dựng liên minh công - nông và đoàn kết quốc tế",
+        B: "Lãnh đạo đấu tranh công khai, hợp pháp",
+        C: "Xây dựng lực lượng vũ trang hùng mạnh",
+        D: "Khởi nghĩa từng phần, chớp thời cơ tổng khởi nghĩa",
+        correct: "D"
+    }
+];
+
+
+
+let current = 0;
+let score = 0;
+let locked = false;
+let wrongQuestions = [];
+let isRedo = false;
+
+let activeQuestions = questions;
+
+function load() {
+    const q = activeQuestions[current];
+    question.innerText = q.q;
+    A.innerText = q.A;
+    B.innerText = q.B;
+    C.innerText = q.C;
+    D.innerText = q.D;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        r.checked = false;
+        r.parentElement.classList.remove("correct", "wrong");
+    });
+
+    result.innerText = "";
+    locked = false;
+}
+
+function next() {
+    if (locked) {
+        current++;
+        if (current < activeQuestions.length) {
+            load();
+        } else {
+            finishQuiz();
+        }
+        return;
+    }
+
+    const selected = document.querySelector("input[name='ans']:checked");
+    if (!selected) {
+        result.innerText = "Chọn câu trả lời!";
+        return;
+    }
+
+    const correct = activeQuestions[current].correct;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        if (r.value === correct) {
+            r.parentElement.classList.add("correct");
+        }
+        if (r.checked && r.value !== correct) {
+            r.parentElement.classList.add("wrong");
+        }
+    });
+
+    if (selected.value === correct) {
+        score++;
+    } else if (!isRedo) {
+        wrongQuestions.push(activeQuestions[current]);
+    }
+
+    result.innerText = "Nhấp Tiếp để tiếp tục";
+    locked = true;
+}
+
+function finishQuiz() {
+    let html = `
+        <h2>Finished</h2>
+        <p style="text-align:center;">
+            Score: ${score}/${activeQuestions.length}
+        </p>
+    `;
+
+    if (!isRedo && wrongQuestions.length > 0) {
+        html += `
+            <button onclick="redoWrong()">Sửa lỗi</button>
+        `;
+    } else {
+        html += `
+            <p style="text-align:center;">Tốt lắm 🎉</p>
+            <a href="index.html">⬅ Back</a>
+        `;
+    }
+
+    document.querySelector(".quiz-box").innerHTML = html;
+}
+
+function redoWrong() {
+    activeQuestions = wrongQuestions;
+    wrongQuestions = [];
+    current = 0;
+    score = 0;
+    isRedo = true;
+
+    document.querySelector(".quiz-box").innerHTML = `
+        <h2>Fix Mistakes</h2>
+        <p class="question" id="question"></p>
+
+        <div class="answers">
+          <label>
+            <input type="radio" name="ans" value="A">
+            <span id="A"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="B">
+            <span id="B"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="C">
+            <span id="C"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="D">
+            <span id="D"></span>
+          </label>
+        </div>
+
+        <button onclick="next()">Tiếp</button>
+        <div class="result" id="result"></div>
+    `;
+    load();
+}
+
+
+load();
+</script>
+
+
+</body>
+</html>
