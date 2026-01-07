@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Chiến thắng Việt Bắc thu - đông (1947)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<nav class="navbar">
+  <div class="nav-left">
+    <span class="logo"><img src="camlelogo.png" width=80px> AR History Quiz</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="about.html">Giới thiệu</a>
+    <a href="data.html">Dữ liệu</a>
+    <a href="https://thptcamle.edu.vn/" target="_blank">Trường học</a>
+    <a href="index.html" class="start-btn">Vào làm bài</a>
+  </div>
+
+</nav>
+
+
+<div class="container">
+  <div class="quiz-box">
+    <h2>Chiến thắng Việt Bắc thu - đông (1947)</h2>
+
+    <p class="question" id="question"></p>
+
+    <div class="answers">
+      <label>
+        <input type="radio" name="ans" value="A">
+        <span id="A"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="B">
+        <span id="B"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="C">
+        <span id="C"></span>
+      </label>
+
+      <label>
+        <input type="radio" name="ans" value="D">
+        <span id="D"></span>
+      </label>
+    </div>
+
+    <button onclick="next()">Tiếp</button>
+    <div class="result" id="result"></div>
+  </div>
+</div>
+
+
+<script>
+const questions = [
+    {
+        q: "Câu 1: Sau khi đánh chiếm các thành phố lớn, thực dân Pháp có âm mưu gì?",
+        A: "Mở cuộc tấn công quy mô lớn lên căn cứ địa Cao Bằng",
+        B: "Mở cuộc tấn công quy mô lớn lên căn cứ địa Thái Nguyên",
+        C: "Mở cuộc tấn công quy mô lớn lên căn cứ địa Phú Thọ",
+        D: "Mở cuộc tấn công quy mô lớn lên căn cứ địa Việt Bắc",
+        correct: "D"
+    },
+    {
+        q: "Câu 2: Thực dân Pháp mở cuộc tấn công căn cứ địa Việt Bắc nhằm mục đích gì?",
+        A: "Tiêu diệt cơ quan đầu não kháng chiến và tiêu diệt bộ đội chủ lực của ta để mau chóng kết thúc chiến tranh",
+        B: "Tiêu diệt cơ quan đầu não kháng chiến",
+        C: "Tiêu diệt bộ đội chủ lực của ta để mau chóng kết thúc chiến tranh",
+        D: "Kết thúc chiến tranh",
+        correct: "A"
+    },
+    {
+        q: "Câu 3: Trung ương Đảng dưới sự chủ trì của Chủ tịch Hồ Chí Minh đã có quyết định như thế nào?",
+        A: "Phá tan cuộc tấn công của giặc",
+        B: "Rời khỏi căn cứ địa",
+        C: "Kí hiệp định kết thúc chiến tranh",
+        D: "Nhượng bộ để tập trung phát triển kinh tế",
+        correct: "A"
+    },
+    {
+        q: "Câu 4: Thực dân Pháp tấn công lên Việt Bắc vào thời gian nào?",
+        A: "9-1947",
+        B: "10-1947",
+        C: "11-1947",
+        D: "12-1947",
+        correct: "B"
+    },
+    {
+        q: "Câu 5: Thực dân Pháp chia một lực lượng lớn, chia làm ................. tấn công lên Việt Bắc",
+        A: "5 mũi",
+        B: "4 mũi",
+        C: "3 mũi",
+        D: "2 mũi",
+        correct: "C"
+    },
+    {
+        q: "Câu 6: Thực dân Pháp nhảy dù xuống và rơi vào trận địa phục kích của ta ở đâu?",
+        A: "Bắc Kạn, Chợ Mới",
+        B: "Chợ Mới, Chợ Đồn",
+        C: "Bắc Kạn, Chợ Đồn",
+        D: "Bắc Kạn, Chợ Mới, Chợ Đồn",
+        correct: "D"
+    },
+    {
+        q: "Câu 7: Trên đường bộ, quân ta chặn đánh địch và giành thắng lợi ở:",
+        A: "Đèo Bông Lau",
+        B: "Sông Lô",
+        C: "Đoan Hùng",
+        D: "Bình Ca",
+        correct: "A"
+    },
+    {
+        q: "Câu 8: Trên đường thủy, ta chặn đánh địch ở:",
+        A: "Đèo Bông Lau",
+        B: "Sông Lô",
+        C: "Đoan Hùng",
+        D: "Bình Ca",
+        correct: "C"
+    },
+    {
+        q: "Câu 9: Tại Đoan Hùng, tàu chiến và ca nô Pháp bị đốt cháy trên dòng sông:",
+        A: "Đèo Bông Lau",
+        B: "Sông Lô",
+        C: "Đoan Hùng",
+        D: "Bình Ca",
+        correct: "B"
+    },
+    {
+        q: "Câu 10: Sau hơn một tháng bị sa lầy ở Việt Bắc, kết quả âm mưu của chúng ra sao?",
+        A: "Địch buộc phải rút lui",
+        B: "Quân ta đã phải nhượng bộ chúng",
+        C: "Chúng ta tiêu diệt được cơ quan đầu não của ta",
+        D: "Chúng làm cho lực lượng của quân ta bị suy giảm",
+        correct: "A"
+    },
+    {
+        q: "Câu 11: Sau hơn một tháng bị sa lầy, địch buộc phải rút lui. Quân ta mai phục chặn đánh dữ dội tại",
+        A: "Đoan Hùng",
+        B: "Bình Ca",
+        C: "Đèo Bông Lau",
+        D: "Bình Ca, Đoan Hùng",
+        correct: "D"
+    },
+    {
+        q: "Câu 12: Kết quả của chiến dịch Việt Bắc Thu – Đông 1947, địch chết hơn ..................... tên, bị bắt hàng trăm tên.",
+        A: "1000",
+        B: "2000",
+        C: "3000",
+        D: "4000",
+        correct: "C"
+    },
+    {
+        q: "Câu 13: Quân ta đã bắn rơi bao nhiêu máy bay của địch?",
+        A: "18",
+        B: "19",
+        C: "17",
+        D: "16",
+        correct: "D"
+    },
+    {
+        q: "Câu 14: Chọn đáp án đúng:",
+        A: "Quân dân ta đã đánh bại cuộc tấn công quy mô lớn, phá tan âm mưu “Đánh nhanh thắng nhanh” của thực dân Pháp.",
+        B: "Sau hơn 1 tháng chiến đấu, ta bảo vệ được cơ quan đầu não của cuộc kháng chiến.",
+        C: "Sau hơn 1 tháng sa lầy, địch buộc phải rút lui, nhiều tàu chiến ca nô bị bắn chìm.",
+        D: "Địch chết hơn 3000 tên, bị bắt hàng nghìn tên.",
+        correct: "D"
+    },
+    {
+        q: "Câu 15: Thực dân Pháp tấn công lên Việt Bắc nhằm tiêu diệt cơ quan đầu não kháng chiến và bộ đội chủ lực của ta để nhanh chóng kết thúc chiến tranh. Tuy nhiên, Việt Bắc đã trở thành “...................”.",
+        A: "Căn cứ địa của thực dân Pháp",
+        B: "Mồ chôn giặc Pháp",
+        C: "Nơi chiến thắng của quân ta",
+        D: "Căn cứ địa lâu dài của ta",
+        correct: "B"
+    }
+];
+
+
+let current = 0;
+let score = 0;
+let locked = false;
+let wrongQuestions = [];
+let isRedo = false;
+
+let activeQuestions = questions;
+
+function load() {
+    const q = activeQuestions[current];
+    question.innerText = q.q;
+    A.innerText = q.A;
+    B.innerText = q.B;
+    C.innerText = q.C;
+    D.innerText = q.D;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        r.checked = false;
+        r.parentElement.classList.remove("correct", "wrong");
+    });
+
+    result.innerText = "";
+    locked = false;
+}
+
+function next() {
+    if (locked) {
+        current++;
+        if (current < activeQuestions.length) {
+            load();
+        } else {
+            finishQuiz();
+        }
+        return;
+    }
+
+    const selected = document.querySelector("input[name='ans']:checked");
+    if (!selected) {
+        result.innerText = "Chọn câu trả lời!";
+        return;
+    }
+
+    const correct = activeQuestions[current].correct;
+
+    document.querySelectorAll("input[name='ans']").forEach(r => {
+        if (r.value === correct) {
+            r.parentElement.classList.add("correct");
+        }
+        if (r.checked && r.value !== correct) {
+            r.parentElement.classList.add("wrong");
+        }
+    });
+
+    if (selected.value === correct) {
+        score++;
+    } else if (!isRedo) {
+        wrongQuestions.push(activeQuestions[current]);
+    }
+
+    result.innerText = "Nhấp Tiếp để tiếp tục";
+    locked = true;
+}
+
+function finishQuiz() {
+    let html = `
+        <h2>Finished</h2>
+        <p style="text-align:center;">
+            Score: ${score}/${activeQuestions.length}
+        </p>
+    `;
+
+    if (!isRedo && wrongQuestions.length > 0) {
+        html += `
+            <button onclick="redoWrong()">Sửa lỗi</button>
+        `;
+    } else {
+        html += `
+            <p style="text-align:center;">Tốt lắm 🎉</p>
+            <a href="index.html">⬅ Back</a>
+        `;
+    }
+
+    document.querySelector(".quiz-box").innerHTML = html;
+}
+
+function redoWrong() {
+    activeQuestions = wrongQuestions;
+    wrongQuestions = [];
+    current = 0;
+    score = 0;
+    isRedo = true;
+
+    document.querySelector(".quiz-box").innerHTML = `
+        <h2>Fix Mistakes</h2>
+        <p class="question" id="question"></p>
+
+        <div class="answers">
+          <label>
+            <input type="radio" name="ans" value="A">
+            <span id="A"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="B">
+            <span id="B"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="C">
+            <span id="C"></span>
+          </label>
+
+          <label>
+            <input type="radio" name="ans" value="D">
+            <span id="D"></span>
+          </label>
+        </div>
+
+        <button onclick="next()">Tiếp</button>
+        <div class="result" id="result"></div>
+    `;
+    load();
+}
+
+
+load();
+</script>
+
+
+</body>
+</html>
