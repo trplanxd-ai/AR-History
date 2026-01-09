@@ -103,7 +103,6 @@ button:hover {
     font-weight: bold;
 }
 
-/* ===== NAVBAR GIỚI THIỆU ===== */
 .navbar {
     position: sticky;
     top: 0;
@@ -134,7 +133,6 @@ button:hover {
 }
 
 
-/* Nút vào làm bài */
 .start-btn {
     padding: 8px 18px;
     border-radius: 20px;
@@ -188,7 +186,6 @@ button:hover {
     line-height: 1.6;
     color: #555;
 }
-/* ===== DỮ LIỆU ===== */
 .data-container {
     max-width: 900px;
     margin: 80px auto;
@@ -219,10 +216,10 @@ button:hover {
     border-radius: 10px;
 }
 :root {
-  --bg: #f5f1e8;          /* giấy cũ */
-  --primary: #7a1f1f;     /* đỏ sẫm cách mạng */
-  --secondary: #3b2f2f;   /* nâu gỗ */
-  --accent: #c9a24d;      /* vàng đồng */
+  --bg: #f5f1e8;          
+  --primary: #7a1f1f;     
+  --secondary: #3b2f2f;   
+  --accent: #c9a24d;      
   --text: #2b2b2b;
 }
 .intro, .quiz-box, .video-item {
@@ -285,4 +282,5 @@ button:hover {
   color: white;
   transform: translateX(6px);
 }
+
 
